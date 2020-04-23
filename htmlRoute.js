@@ -10,7 +10,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "./index.html"));
   });
 
-  // If no matching route is found default to home
+  // If no matching route is found default to home?
   app.get("index", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
