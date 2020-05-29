@@ -1,13 +1,16 @@
 var fs = require("fs");
-var notes = require ("../db/db.json");
+var notes = require ("../db/db.json"); //the notes that are created into the backend ARE working. 
 var inc = notes[notes.length - 1]
 
 module.exports = function (app) {
-    app.get("./api/notes", function (req, res) {
+    app.get("/api/notes", function (req, res) {
         res.json(notes)
+        console.log(notes)
+        console.log("test again")
     });
-    app.post("/.api/notes", function (req, res) {
+    app.post("/api/notes", function (req, res) {
         console.log(req.body);
+        // console.log("test")
         var obj=req.body;
         obj.id=inc.id + 1;
         inc=obj;
@@ -19,7 +22,7 @@ module.exports = function (app) {
         } )
         res.json(notes)
     });
-    app.delete("./api/notes/:id", function (req, res) {
+    app.delete("/api/notes/:id", function (req, res) {
         console.log(req.params.id);
         for (i=0; i<notes.length; i++) {
             console.log(typeof parseInt(req.params.id, 10), typeof notes[i].id)
